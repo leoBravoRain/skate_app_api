@@ -32,7 +32,7 @@ class Location(models.Model):
 class Videos_Location(models.Model):
 
 	location = models.ForeignKey(Location, on_delete=models.CASCADE)
-	link = models.CharField(max_length = 500)
+	link = models.CharField(max_length = 100000)
 	votes = models.IntegerField(default = 0)
 	comment = models.CharField(max_length = 2000, null=True)
 
