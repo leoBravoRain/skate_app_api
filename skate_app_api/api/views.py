@@ -65,7 +65,8 @@ class Create_View_Videos_Location(generics.ListCreateAPIView):
         location_id = self.kwargs['location_id']
 
         # Filter by location id
-        queryset = Videos_Location.objects.filter(Q(location__id__exact = location_id) and Q(activate__exact = True)).order_by("-votes")
+        # queryset = Videos_Location.objects.filter(Q(location__id__exact = location_id) and Q(activate__exact = True)).order_by("-votes")
+        queryset = Videos_Location.objects.filter(Q(location__id__exact = location_id)).order_by("-votes")
 
         # Return queryset
         return queryset 
