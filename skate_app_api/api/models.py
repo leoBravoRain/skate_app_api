@@ -35,6 +35,7 @@ class Videos_Location(models.Model):
 	link = models.CharField(max_length = 100000)
 	votes = models.IntegerField(default = 0)
 	comment = models.CharField(max_length = 2000, null=True)
+	activate = models.BooleanField(default = True)
 
 	# It must to be linked to other model (maybe users must to create its own account)
 	skater = models.CharField(max_length = 1000)

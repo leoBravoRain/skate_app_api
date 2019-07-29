@@ -4,6 +4,8 @@ from rest_framework import generics
 from .serializers import Place_Serializers, LocationSerializers, Videos_Location_Serializers
 from .models import Place, Location, Videos_Location
 
+from django.db.models import Q
+
 # Create your views here.
 # Manage places (one city eg)
 class Create_Place(generics.ListCreateAPIView):
@@ -63,7 +65,7 @@ class Create_View_Videos_Location(generics.ListCreateAPIView):
         location_id = self.kwargs['location_id']
 
         # Filter by location id
-        queryset = Videos_Location.objects.filter(location__id__exact = location_id).order_by("-votes")
+        queryset = Videos_Location.objects.filter(Q(location__id__exact = location_id) and Q(activate__exact = True)).order_by("-votes")
 
         # Return queryset
         return queryset 
